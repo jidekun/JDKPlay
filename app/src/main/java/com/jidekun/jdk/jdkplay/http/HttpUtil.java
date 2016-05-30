@@ -27,7 +27,6 @@ public class HttpUtil {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet(url);
         LogUtil.e("HttpUtil", "请求的url:" + url);
-        System.out.println("请求的url:" + url);
         try {
             HttpResponse httpResponse = httpClient.execute(httpGet);
             if (httpResponse.getStatusLine().getStatusCode() == 200) {
@@ -49,8 +48,6 @@ public class HttpUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        LogUtil.e("HttpUtil", "响应的数据:" + result);
-
         return result;
     }
 }

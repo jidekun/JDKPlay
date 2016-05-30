@@ -24,23 +24,22 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (loadingPage==null){
+        if (loadingPage == null) {
             loadingPage = new LoadingPage(getActivity()) {
                 @Override
                 public View createSuccessView() {
-                   // return createView();
-                    TextView t =new TextView(getActivity());
-                    return t ;
+                    return createView();
                 }
+
                 @Override
                 public Object loadData() {
                     return requstData();
                 }
             };
-        }else{
+        } else {
             //需要拿loadingPage的父View（NoSaveStateFramelayout）去移除它自己
-            LogUtil.e(this, "loadingPage已经不为空了: parent: "+loadingPage.getParent().getClass().getSimpleName());
-      //      CommonUtils.removeSelfFromParent(loadingPage);
+            //  LogUtil.e(this, "loadingPage已经不为空了: parent: " + loadingPage.getParent().getClass().getSimpleName());
+            // CommonUtils.removeSelfFromParent(loadingPage);
             //但是呢，在Android5.0之后的FragmentManager已经不会在Fragment的view外边包裹一层，这意味着不用移除也不会报错;
         }
 
@@ -48,7 +47,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-   // public abstract View createView();
+    public abstract View createView();
 
     public abstract Object requstData();
 }

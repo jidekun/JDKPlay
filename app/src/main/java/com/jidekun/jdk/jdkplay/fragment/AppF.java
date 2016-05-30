@@ -13,7 +13,12 @@ import com.jidekun.jdk.jdkplay.fragment.base.BaseFragment;
  * Created by JDK on 2016/5/27.
  */
 public class AppF extends BaseFragment {
-
+    @Override
+    public View createView() {
+        TextView textView = new TextView(getActivity());
+        textView.setText(this.getClass().getSimpleName());
+        return textView;
+    }
 
     @Override
     public Object requstData() {
