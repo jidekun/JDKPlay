@@ -20,6 +20,7 @@ import com.jidekun.jdk.jdkplay.adapter.MainPagerAdapter;
 import com.jidekun.jdk.jdkplay.http.HttpUtil;
 import com.jidekun.jdk.jdkplay.ui.PagerSlidingTab;
 import com.jidekun.jdk.jdkplay.utils.LogUtil;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.File;
 
@@ -50,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setActionBar() {
+
         //获得actionbar对象
         ActionBar supportActionBar = getSupportActionBar();
         supportActionBar.setIcon(R.drawable.ic_launcher);
