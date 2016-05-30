@@ -19,7 +19,7 @@ import com.jidekun.jdk.jdkplay.utils.LogUtil;
  */
 public abstract class BaseFragment extends Fragment {
 
-    private LoadingPage loadingPage;
+    public LoadingPage loadingPage;
 
     @Nullable
     @Override

@@ -8,8 +8,11 @@ import android.widget.TextView;
 
 import com.jidekun.jdk.jdkplay.R;
 import com.jidekun.jdk.jdkplay.bean.AppInfo;
+import com.jidekun.jdk.jdkplay.global.Api;
+import com.jidekun.jdk.jdkplay.global.ImageLoaderOptions;
 import com.jidekun.jdk.jdkplay.global.JDKContext;
 import com.jidekun.jdk.jdkplay.holder.base.BaseHolder;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Created by JDK on 2016/5/30.
@@ -38,5 +41,7 @@ public  class HomeViewHolder extends BaseHolder<AppInfo>{
         rb_star.setRating(appInfo.getStars());
         tv_size.setText(Formatter.formatFileSize(JDKContext.context,appInfo.getSize()));
         tv_des.setText(appInfo.getDes());
+        //使用第三方加载图片 传入三个参数,图片地址,imageview,和参数
+        ImageLoader.getInstance().displayImage(Api.IMAGE_PREFIX+appInfo.getIconUrl(),iv_icon, ImageLoaderOptions.round_options);
     }
 }

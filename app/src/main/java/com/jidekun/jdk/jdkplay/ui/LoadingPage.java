@@ -94,7 +94,7 @@ public abstract class LoadingPage extends FrameLayout {
         }
     }
 
-    private void requestData() {
+    public  void requestData() {
         //向网络请求数据耗时操作,放在子线程
         new Thread() {
             @Override
