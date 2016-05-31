@@ -48,6 +48,7 @@ public class AppF extends BaseListFragment<AppInfo> {
         ArrayList<AppInfo> appInfos = (ArrayList<AppInfo>) JsonUtil.parseJsonToList(result, new TypeToken<List<AppInfo>>() {
         }.getType());
         if (appInfos != null) {
+
             list.addAll(appInfos);//更新数据
             CommonUtils.runOnUIThread(new Runnable() {
                 @Override
