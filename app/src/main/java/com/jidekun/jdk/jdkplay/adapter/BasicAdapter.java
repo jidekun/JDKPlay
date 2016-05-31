@@ -4,8 +4,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-
-import com.jidekun.jdk.jdkplay.holder.HomeViewHolder;
 import com.jidekun.jdk.jdkplay.holder.base.BaseHolder;
 
 import java.util.ArrayList;
