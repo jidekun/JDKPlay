@@ -1,6 +1,5 @@
 package com.jidekun.jdk.jdkplay.adapter;
 
-import com.jidekun.jdk.jdkplay.bean.AppInfo;
 import com.jidekun.jdk.jdkplay.bean.Subject;
 import com.jidekun.jdk.jdkplay.holder.SubjectViewHolder;
 import com.jidekun.jdk.jdkplay.holder.base.BaseHolder;

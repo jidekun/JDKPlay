@@ -3,6 +3,7 @@ package com.jidekun.jdk.jdkplay.fragment;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -34,7 +35,7 @@ public class HomeF extends BaseListFragment<AppInfo> {
     // private PullToRefreshListView refreshListView;
     // private ListView listView;
 
-   // private HomeAdapter homeAdapter;
+    // private HomeAdapter homeAdapter;
     private ViewPager viewPager;
 
 
@@ -77,6 +78,15 @@ public class HomeF extends BaseListFragment<AppInfo> {
     public void addHeader() {
         View headerView = View.inflate(getActivity(), R.layout.layout_home_header, null);
         viewPager = (ViewPager) headerView.findViewById(R.id.viewPager);
+        //根据图片的宽高比，去动态设定viewPager的高度，让它的宽高比和图片能保持一致
+      //1.获取屏幕的宽度
+        int width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+        //2.根据图片的宽高比获取对应的高度,(宽高比是2.65)
+        float height = width / 2.65f;
+        //3.将高度设置给viewPager
+        ViewGroup.LayoutParams params = viewPager.getLayoutParams();
+        params.height = (int) height;
+        viewPager.setLayoutParams(params);
         listView.addHeaderView(headerView);
     }
 
