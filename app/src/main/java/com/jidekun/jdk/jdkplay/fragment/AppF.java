@@ -43,6 +43,7 @@ public class AppF extends BaseListFragment<AppInfo> {
         checkPullFromStart();
         //返回json字符串 如果集合size为0 为第一次0到20的数据
         String result = HttpUtil.get(Api.App + list.size());
+
         //使用工具类 将json转集合
         ArrayList<AppInfo> appInfos = (ArrayList<AppInfo>) JsonUtil.parseJsonToList(result, new TypeToken<List<AppInfo>>() {
         }.getType());
