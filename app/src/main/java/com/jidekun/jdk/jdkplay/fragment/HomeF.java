@@ -79,7 +79,7 @@ public class HomeF extends BaseListFragment<AppInfo> {
         View headerView = View.inflate(getActivity(), R.layout.layout_home_header, null);
         viewPager = (ViewPager) headerView.findViewById(R.id.viewPager);
         //根据图片的宽高比，去动态设定viewPager的高度，让它的宽高比和图片能保持一致
-      //1.获取屏幕的宽度
+         //1.获取屏幕的宽度
         int width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
         //2.根据图片的宽高比获取对应的高度,(宽高比是2.65)
         float height = width / 2.65f;
