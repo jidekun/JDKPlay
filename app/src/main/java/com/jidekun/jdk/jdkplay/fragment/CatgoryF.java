@@ -44,16 +44,16 @@ public class CatgoryF extends BaseFragment {
         String result = HttpUtil.get(Api.Category);
         ArrayList<Category> category = (ArrayList<Category>) JsonUtil.parseJsonToList(result, new TypeToken<List<Category>>() {
         }.getType());
-        LogUtil.e(CatgoryF.this,list.size()+"遍历前");
         if (list != null) {
             //将获得的String和CategoryInfo数据全存一个集合,在适配器中通过判断类型进行设置
             ArrayList<CategoryInfo> infos;
             for (Category temp : category) {
+                //1.将title放入list中
                 list.add(temp.getTitle());
                 infos = temp.getInfos();
+                //2.将infos中的CategoryInfo放入list中
                 list.addAll(infos);
             }
-            LogUtil.e(CatgoryF.this,list.size()+"遍历后");
             CommonUtils.runOnUIThread(new Runnable() {
                 @Override
                 public void run() {
