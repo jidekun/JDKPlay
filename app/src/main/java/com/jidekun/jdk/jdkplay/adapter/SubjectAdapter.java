@@ -15,7 +15,8 @@ public class SubjectAdapter extends BasicAdapter<Subject>{
     }
 
     @Override
-    public BaseHolder<Subject> getHolder() {
+    public BaseHolder<Subject> getHolder(int position) {
+
         return new SubjectViewHolder();
     }
 }

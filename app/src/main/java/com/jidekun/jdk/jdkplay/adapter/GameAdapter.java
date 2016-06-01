@@ -13,8 +13,9 @@ public class GameAdapter extends BasicAdapter<AppInfo>{
     public GameAdapter(ArrayList<AppInfo> list) {
         super(list);
     }
+
     @Override
-    public BaseHolder<AppInfo> getHolder() {
+    public BaseHolder<AppInfo> getHolder(int position) {
         //因为显示的item和home界面的一样直接使用home界面的
         return new HomeViewHolder();
     }

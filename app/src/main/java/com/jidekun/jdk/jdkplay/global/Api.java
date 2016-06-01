@@ -18,4 +18,11 @@ public interface Api {
     String Subject = SERVER_HOST + "subject?index=";
     //recommend页的url地址
     String Recommend = SERVER_HOST + "recommend?index=0";
+
+    //category页的url地址
+    String Category = SERVER_HOST + "category?index=0";
+    //hot页的url地址
+    String Hot = SERVER_HOST + "hot?index=0";
+    //detail页的url地址
+    String Detail = SERVER_HOST + "detail?packageName=%s";
 }

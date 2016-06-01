@@ -14,7 +14,8 @@ public class HomeAdapter extends BasicAdapter<AppInfo> {
     }
 
     @Override
-    public BaseHolder<AppInfo> getHolder() {
+    public BaseHolder<AppInfo> getHolder(int position) {
+
         return new HomeViewHolder();
     }
 }

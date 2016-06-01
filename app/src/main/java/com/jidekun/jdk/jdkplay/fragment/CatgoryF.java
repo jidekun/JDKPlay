@@ -1,28 +1,66 @@
 package com.jidekun.jdk.jdkplay.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.reflect.TypeToken;
+import com.jidekun.jdk.jdkplay.R;
+import com.jidekun.jdk.jdkplay.adapter.CatgoryAdapter;
+import com.jidekun.jdk.jdkplay.bean.Category;
+import com.jidekun.jdk.jdkplay.bean.CategoryInfo;
 import com.jidekun.jdk.jdkplay.fragment.base.BaseFragment;
+import com.jidekun.jdk.jdkplay.global.Api;
+import com.jidekun.jdk.jdkplay.global.JDKContext;
+import com.jidekun.jdk.jdkplay.http.HttpUtil;
+import com.jidekun.jdk.jdkplay.utils.CommonUtils;
+import com.jidekun.jdk.jdkplay.utils.JsonUtil;
+import com.jidekun.jdk.jdkplay.utils.LogUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by JDK on 2016/5/27.
  */
 public class CatgoryF extends BaseFragment {
 
+
+    private ListView listView;
+
     @Override
     public View createView() {
-        TextView textView = new TextView(getActivity());
-        textView.setText(this.getClass().getSimpleName());
-        return textView;
+        listView = (ListView) View.inflate(JDKContext.context, R.layout.category_listview, null);
+        return listView;
     }
+
+      ArrayList<Object> list = new ArrayList<>();
 
     @Override
     public Object requstData() {
-        return null;
+
+        String result = HttpUtil.get(Api.Category);
+        ArrayList<Category> category = (ArrayList<Category>) JsonUtil.parseJsonToList(result, new TypeToken<List<Category>>() {
+        }.getType());
+        LogUtil.e(CatgoryF.this,list.size()+"遍历前");
+        if (list != null) {
+            //将获得的String和CategoryInfo数据全存一个集合,在适配器中通过判断类型进行设置
+            ArrayList<CategoryInfo> infos;
+            for (Category temp : category) {
+                list.add(temp.getTitle());
+                infos = temp.getInfos();
+                list.addAll(infos);
+            }
+            LogUtil.e(CatgoryF.this,list.size()+"遍历后");
+            CommonUtils.runOnUIThread(new Runnable() {
+                @Override
+                public void run() {
+                    listView.setAdapter(new CatgoryAdapter(list));
+                }
+            });
+        }
+        return list;
     }
 }

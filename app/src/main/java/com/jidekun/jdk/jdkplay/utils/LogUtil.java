@@ -26,4 +26,6 @@ public class LogUtil {
 			Log.e(object.getClass().getSimpleName(), msg);
 		}
 	}
+
+
 }

@@ -43,7 +43,7 @@ public abstract class BasicAdapter<T> extends BaseAdapter {
         //初始化holder,将View对象所有的操作都交给Viewholder去做,自己只返回数据
         BaseHolder<T> holder = null;
         if (convertView == null) {
-            holder = getHolder();
+            holder = getHolder(position);
         } else {
             holder = (BaseHolder) convertView.getTag();
         }
@@ -51,16 +51,18 @@ public abstract class BasicAdapter<T> extends BaseAdapter {
         holder.bindData(list.get(position));
         //从holderview中获取view
         View holderView = holder.getHolderView();
-
         // 4.增加炫酷动画
-        // 一开始缩小
-//        holderView.setScaleX(0.5f);
-//        holderView.setScaleY(0.5f);
-        // 执行放大动画
         ScaleAnimation animation = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         animation.setDuration(400);
         animation.setInterpolator(new OvershootInterpolator());
         holderView.startAnimation(animation);
+
+        // 一开始缩小
+        //如下是使用Nineoldeandroid.jar 向下兼容包
+//        holderView.setScaleX(0.5f);
+//        holderView.setScaleY(0.5f);
+        // 执行放大动画
+        //如下是使用Nineoldeandroid.jar 向下兼容包
 //        ViewPropertyAnimator.animate(holder.getHolderView()).
 //                scaleX(1f).
 //                setDuration(400).
@@ -74,5 +76,5 @@ public abstract class BasicAdapter<T> extends BaseAdapter {
         return holderView;
     }
 
-    public abstract BaseHolder<T> getHolder();
+    public abstract BaseHolder<T> getHolder(int position);
 }
