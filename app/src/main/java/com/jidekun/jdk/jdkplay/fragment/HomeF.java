@@ -1,15 +1,18 @@
 package com.jidekun.jdk.jdkplay.fragment;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jidekun.jdk.jdkplay.R;
+import com.jidekun.jdk.jdkplay.activity.DetailActivity;
 import com.jidekun.jdk.jdkplay.adapter.BasicAdapter;
 import com.jidekun.jdk.jdkplay.adapter.HomeAdapter;
 import com.jidekun.jdk.jdkplay.adapter.HomeHeaderAdapter;
@@ -22,6 +25,7 @@ import com.jidekun.jdk.jdkplay.global.JDKContext;
 import com.jidekun.jdk.jdkplay.http.HttpUtil;
 import com.jidekun.jdk.jdkplay.ui.LoadingPage;
 import com.jidekun.jdk.jdkplay.utils.CommonUtils;
+import com.jidekun.jdk.jdkplay.utils.ToastUtils;
 
 import java.util.ArrayList;
 
@@ -79,7 +83,7 @@ public class HomeF extends BaseListFragment<AppInfo> {
         View headerView = View.inflate(getActivity(), R.layout.layout_home_header, null);
         viewPager = (ViewPager) headerView.findViewById(R.id.viewPager);
         //根据图片的宽高比，去动态设定viewPager的高度，让它的宽高比和图片能保持一致
-         //1.获取屏幕的宽度
+        //1.获取屏幕的宽度
         int width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
         //2.根据图片的宽高比获取对应的高度,(宽高比是2.65)
         float height = width / 2.65f;
@@ -156,5 +160,21 @@ public class HomeF extends BaseListFragment<AppInfo> {
         super.onStop();
         //移除消息
         handler.removeMessages(0);
+    }
+
+    //item的点击事件
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //获得listview中头布局的个数
+        int headerViewsCount = listView.getHeaderViewsCount();
+        //实际item的位置要减去所有头布局的个数
+        position -= headerViewsCount;
+        AppInfo appInfo = list.get(position);
+        String packageName = appInfo.getPackageName();
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        //将包名传过去,从而请求通过包名向服务器请求数据
+        intent.putExtra("packageName",packageName);
+        startActivity(intent);
+
     }
 }

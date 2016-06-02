@@ -1,6 +1,7 @@
 package com.jidekun.jdk.jdkplay.fragment.base;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -8,13 +9,14 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jidekun.jdk.jdkplay.R;
 import com.jidekun.jdk.jdkplay.adapter.BasicAdapter;
 import com.jidekun.jdk.jdkplay.global.JDKContext;
+import com.jidekun.jdk.jdkplay.utils.ToastUtils;
 
 import java.util.ArrayList;
 
 /**
  * Created by JDK on 2016/5/31.
  */
-public abstract class BaseListFragment<T> extends BaseFragment {
+public abstract class BaseListFragment<T> extends BaseFragment   implements ListView.OnItemClickListener {
     protected PullToRefreshListView refreshListView;
     protected ListView listView;
     protected BasicAdapter<T> basicAdapter;
@@ -38,6 +40,7 @@ public abstract class BaseListFragment<T> extends BaseFragment {
         });
         //3.获取PullToRefreshListView内部包裹的ListView
         listView = refreshListView.getRefreshableView();
+        listView.setOnItemClickListener(this);
         //设置listview的模式
         setListViewMode();
         //添加头布局

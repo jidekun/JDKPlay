@@ -3,6 +3,7 @@
           package="com.jidekun.jdk.jdkplay">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".global.JDKContext"
         android:allowBackup="true"
@@ -13,8 +14,11 @@
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".activity.DetailActivity">
         </activity>
     </application>
 
