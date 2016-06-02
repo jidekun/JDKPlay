@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- app info -->
+            <!-- app info 增加代码的可读性-->
             <include layout="@layout/layout_detail_app_info"/>
 
         </LinearLayout>
