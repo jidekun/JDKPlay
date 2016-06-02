@@ -17,11 +17,13 @@ import com.jidekun.jdk.jdkplay.utils.CommonUtils;
  */
 public abstract class LoadingPage extends FrameLayout {
     public LoadingPage(Context context) {
-        this(context, null);
+        super(context);
+        initLoadingPage();
     }
 
     public LoadingPage(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        initLoadingPage();
     }
 
     public LoadingPage(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -33,8 +35,9 @@ public abstract class LoadingPage extends FrameLayout {
     private static final int STATE_LOADING = 0; //加载中的状态
     private static final int STATE_ERROR = 1; //加载失败的状态
     private static final int STATE_SUCCESS = 2;//加载成功的状态
-
-    private static int PageState = STATE_LOADING;//表示界面当前的state，默认是加载中
+    //初始化状态不能定义为static ,不然会出现不显示加载页的情况,
+    // 因为其一直在内存中保存这加载第一个页面是的状态,另外页面再加载时,会用到上一次页面的状态
+    private    int PageState = STATE_LOADING;//表示界面当前的state，默认是加载中
     private View loadingView; //加载中
     private View errorView;
     private View successView;
@@ -94,7 +97,7 @@ public abstract class LoadingPage extends FrameLayout {
         }
     }
 
-    public  void requestData() {
+    public void requestData() {
         //向网络请求数据耗时操作,放在子线程
         new Thread() {
             @Override
