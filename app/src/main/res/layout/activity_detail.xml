@@ -8,22 +8,27 @@
     android:orientation="vertical"
     tools:context="com.jidekun.jdk.jdkplay.activity.DetailActivity">
 
-    <ScrollView android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/sv"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <LinearLayout android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/ll_detail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <!-- app info 增加代码的可读性-->
-            <include layout="@layout/layout_detail_app_info"/>
+            <!--<include layout="@layout/layout_detail_app_info" />-->
 
         </LinearLayout>
 
     </ScrollView>
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@drawable/detail_bottom_bg"
         android:orientation="horizontal"></LinearLayout>

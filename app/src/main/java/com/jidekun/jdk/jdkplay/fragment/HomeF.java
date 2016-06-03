@@ -43,33 +43,7 @@ public class HomeF extends BaseListFragment<AppInfo> {
     private ViewPager viewPager;
 
 
-//    @Override
-//    public View createView() {
-////        refreshListView = (PullToRefreshListView) View.inflate(JDKContext.context, R.layout.ptr_listview, null);
-//        //1.设置刷新模式
-////        refreshListView.setMode(PullToRefreshBase.Mode.BOTH);//设置既可以上拉也可以下拉
-////        //2.设置刷新监听器
-////        refreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
-////            /**
-////             * 下拉刷新和上拉加载更多都会执行该方法，
-////             */
-////            @Override
-////            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-////                //直接调用父类请求数据的方法 也会调用本类的请求数据的方法 等价与调用本类的requstData方法
-////                loadingPage.requestData();
-////            }
-////        });
-//        //3.获取PullToRefreshListView内部包裹的ListView
-////        listView = refreshListView.getRefreshableView();
-////        listView.setDividerHeight(0);//去掉分割线
-////        listView.setSelector(android.R.color.transparent);//将listveiw的selector设置为透明
-//        //将ViewPager添加到listvew中,需要在setAdapter之前添加
-//        //  addHeader();
-//        //设置适配器
-//        //   homeAdapter = new HomeAdapter(list);
-//        //listView.setAdapter(homeAdapter);
-//        //  return refreshListView;
-//    }
+
 
     @Override
     protected BasicAdapter<AppInfo> getAdapter() {

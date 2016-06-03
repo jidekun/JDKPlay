@@ -30,4 +30,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.github.dcendents:android-maven-plugin:1.2'
     compile files('libs/universal-image-loader-1.9.4.jar')
+    compile 'com.github.iweinzierl:jsonformat:1.0'
+    compile project(':photoView')
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.jakewharton:butterknife:5.1.1'
 }
